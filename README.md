@@ -7,7 +7,7 @@
 5. Install the required packages (make sure you're in the `batlab-chirp-processing` directory, AKA the root directory of this repository.
     - On the command line, type `julia`. Then, hit the `]` key.
     - Type `add Plots`, and then press Enter.
-    - Do the same for using `Printf`, `MAT`, `Statistics`, `Roots`, `DataInterpolations`, and `DSP`.
+    - Do the same for using `Printf`, `MAT`, `Statistics`, `Roots`, `DataInterpolations`, `DSP`, and `WAV`.
     - Run `activate ./BatlabJuliaUtils`.
     -  Press Backspace to exit package mode, and CTRL+d to exit the Julia command line.
 6. Go to `matlab_utils` and use `tdms_to_mat.m` to convert some bat audio TDMS files to MAT files. It is recommended you start off with `Pu166_01` and `Gr116_01`, and save the MAT files in the `batlab-chirp-processing/data` directory.
