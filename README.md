@@ -10,10 +10,10 @@
     - Do the same for using `Printf`, `MAT`, `Statistics`, `Roots`, `DataInterpolations`, and `DSP`.
     - Run `activate ./BatlabJuliaUtils`.
     -  Press Backspace to exit package mode, and CTRL+d to exit the Julia command line.
-6. Go to `matlab_utils` and use `tdms_to_mat.m` to convert some bat audio TDMS files to MAT files. It is recommended you start off with `Pu166_01` and `Gr116_01`, and save the MAT files in the `data` directory.
+6. Go to `matlab_utils` and use `tdms_to_mat.m` to convert some bat audio TDMS files to MAT files. It is recommended you start off with `Pu166_01` and `Gr116_01`, and save the MAT files in the `batlab-chirp-processing/data` directory.
 7. Copy all mic position files to `data`.
 8. Make a subdirectory of `data` called `centroid` and copy all relevant centroid data files to that directory.
-9. Go to `jupyter_notebooks` and run either `jupyter notebook` or `jupyter lab` from the command line. If prompted, opt to use a `Julia` kernel. The file `Walkthrough.ipynb` contains a tutorial for estimating bat vocalizations given the audio data.
+9. Go to `jupyter_notebooks` and run either `jupyter notebook` or `jupyter lab` from the command line. When prompted, opt to use a `Julia` kernel. The file `Walkthrough.ipynb` contains a tutorial for estimating bat vocalizations given the audio data.
    - If `jupyter lab` doesn't work, then  here are some alternatives that might work: `python3 -m jupyterlab`, `python3 -m jupyter lab`, `python3 -m notebook`.
 
 ## Documentation: Julia Code
