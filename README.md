@@ -16,6 +16,11 @@
 9. Go to `jupyter_notebooks` and run either `jupyter notebook` or `jupyter lab` from the command line. When prompted, opt to use a `Julia` kernel. The file `Walkthrough.ipynb` contains a tutorial for estimating bat vocalizations given the audio data.
    - If `jupyter lab` doesn't work, then  here are some alternatives that might work: `python3 -m jupyterlab`, `python3 -m jupyter lab`, `python3 -m notebook`.
 
+## Notebooks
+1. `Walkthrough.ipynb`: contains a tutorial for estimating bat vocalizations given the audio data. You should look at this notebook before anything else.
+2. `SaveChirpsMAT.ipynb`: contains code for saving various computed values (e.g., estimated vocalizations and vocalization times) to MAT files.
+3. `ValidateCentroidData.ipynb`: a short notebook to sanity-check whether the centroid data looks reasonable, i.e., whether the chirps reach the microphones closest to the bat first.
+
 ## Documentation: Julia Code
 Documentation for the `BatlabJuliaUtils` library can be found online [here](https://nsagan271.github.io/BatlabJuliaUtils/build/index.html).
 

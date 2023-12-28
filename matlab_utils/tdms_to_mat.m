@@ -5,7 +5,6 @@ function out_file = tdms_to_mat(filename, save_dir, save_filename)
 % Converts a TDMS file to MAT format. The MAT fields will be the same as the
 % TDMS fields, except with parentheses removed and whitespace replaced with
 % underscores.
-%MAT file will h
 %
 % Inputs:
 % 
@@ -23,9 +22,11 @@ function out_file = tdms_to_mat(filename, save_dir, save_filename)
         filename_split = split(filename, '/');
         save_filename = strcat(replace(filename_split{end}, '.tdms', ''), '.mat');
     end
-    
-    addpath('load_tdms');
-    addpath('load_tdms/tdmsSubfunctions');
+    currpath = split(mfilename('fullpath'), '/');
+    load_tdms_path = strcat(join(currpath(1:end-1), '/'),  '/load_tdms');
+    subfn_path = strcat(join(currpath(1:end-1), '/'),  '/load_tdms/tdmsSubfunctions');
+    addpath(load_tdms_path{1});
+    addpath(subfn_path{1});
 
     data = TDMS_readTDMSFile(filename);
 
