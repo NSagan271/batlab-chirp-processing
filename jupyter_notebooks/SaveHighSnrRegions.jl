@@ -12,7 +12,8 @@ Given the microphone data, `y`, return the SNR and the onset and offset indices 
 """
 function collecthighsnrregions(y::AbstractArray; max_signal_length=MAX_SEQUENCE_LENGTH,
         signal_thresh=30, maxfilter_length=25, min_peak_thresh=35, snr_drop_thresh=20,
-        peak_snr_thresh_radius=2000, tail_snr_thresh=20, tail_maxfilter_length=50)
+        peak_snr_thresh_radius=2000, tail_snr_thresh=20, tail_maxfilter_length=50,
+        padding=0)
     
     noise_sample_idxs = getnoisesampleidxs(y);
     noise_sample = y[noise_sample_idxs, :];
@@ -42,8 +43,8 @@ function collecthighsnrregions(y::AbstractArray; max_signal_length=MAX_SEQUENCE_
                         max_end_idx, tail_snr_thresh, maxfilter_length=tail_maxfilter_length,
                         max_seq_len=max_signal_length);
         end
-        chirp_seq_idxs_per_mic[mic][:, 1] = max.(chirp_seq_idxs_per_mic[mic][:, 1], 1);
-        chirp_seq_idxs_per_mic[mic][:, 2] = min.(chirp_seq_idxs_per_mic[mic][:, 2], size(y, 1));
+        chirp_seq_idxs_per_mic[mic][:, 1] = max.(chirp_seq_idxs_per_mic[mic][:, 1] .- padding, 1);
+        chirp_seq_idxs_per_mic[mic][:, 2] = min.(chirp_seq_idxs_per_mic[mic][:, 2] .+ padding, size(y, 1));
         
     end
 
@@ -88,8 +89,8 @@ function savehighsnrregions(y::AbstractArray, name::String, save_dir::String; ke
     
         for i=1:num_seqs
             len = bounds[i, 2] - bounds[i, 1] + 1;
-            chirp_array[1:len, i] = y[bounds[i, 1]:bounds[i, 2]];
-            chirp_snrs[1:len, i] = snr[bounds[i, 1]:bounds[i, 2]];
+            chirp_array[1:len, i] = y[bounds[i, 1]:bounds[i, 2], mic];
+            chirp_snrs[1:len, i] = snr[bounds[i, 1]:bounds[i, 2], mic];
         end
 
         write(save_file, (@sprintf "mic_%d_data_per_high_snr_region" mic), chirp_array);
